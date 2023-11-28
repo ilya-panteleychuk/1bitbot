@@ -68,9 +68,9 @@ async def check_user_tg_exists(message: Message):
 
 # Передаем сообщение, функция отправляет
 async def send_email(message):
-    sender = "kent.zver.2002@yandex.ru"
-    password = "Pisos.5368"
-    recipient = "fertutirko@gufum.com"
+    sender = "bit.perw@yandex.ru"
+    password = "ojaiaqdykfubxvwi"
+    recipient = "cipsevelti@gufum.com"
 
     server = smtplib.SMTP('smtp.yandex.ru', 587)
     server.ehlo()
