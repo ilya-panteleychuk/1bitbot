@@ -1,0 +1,113 @@
+CREATE TABLE Clients (
+    INN number(15),
+    CLient_surname varchar2(30),
+    Client_name varchar2(30),
+    CLient_patronymic varchar2(30),
+    CLient_Date_of_Birth date,
+    Client_phonenumber varchar2(20),
+    CONSTRAINT pk_INN primary key (INN));
+
+CREATE TABLE Managers (
+    ID_Manager number(15),
+    Manager_surname varchar2(30),
+    Manager_name varchar2(30),
+    Manager_patronymic varchar2(30),
+    Manager_Date_of_Birth date,
+    Department_number number(15),
+    Manager_phonenumber varchar2(20),
+    CONSTRAINT pk_ID_Manager primary key (ID_Manager));
+
+CREATE TABLE Contracts (
+    Contract_number number(30),
+    INN number(15),
+    ID_Manager number(15),
+    Date_of_registration date,
+    Finish_date date,
+    CONSTRAINT pk_Contract_number primary key (Contract_number),
+    CONSTRAINT fk_INN foreign key (INN) references Clients (INN),
+    CONSTRAINT fk_ID_Manager foreign key (ID_Manager) references Managers (ID_Manager));
+
+CREATE TABLE Software_Products (
+    ID_Product number(10),
+    Product_name varchar2(30),
+    INN number(15),
+    Date_of_purchase date,
+    CONSTRAINT pk_ID_Product primary key (ID_Product),
+    CONSTRAINT fkey_INN foreign key (INN) references Clients (INN));
+
+
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('6766201793', 'Voronin', 'Ivan', 'Yaroslavovich', TO_DATE('1988-03-15', 'YYYY-MM-DD'), '89110546783');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('1537504888', 'Pavlova', 'Victoria', 'Evgenievna', TO_DATE('1993-07-24', 'YYYY-MM-DD'), '89231112344');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('0545609195', 'Berezin', 'Daniil', 'Tihonovich', TO_DATE('1981-11-04', 'YYYY-MM-DD'), '89157564534');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('7025879893', 'Frolova', 'Ekaterina', 'Denisovna', TO_DATE('1984-03-09', 'YYYY-MM-DD'), '89560442242');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('9666850374', 'Karasev', 'Vladimir', 'Andreevich', TO_DATE('1978-10-21', 'YYYY-MM-DD'), '89152347645');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('1071240952', 'Minina', 'Arina', 'Dmitrievna', TO_DATE('1991-12-04', 'YYYY-MM-DD'), '89413258769');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('7261913011', 'Kozlov', 'Fedor', 'Ruslanovich', TO_DATE('1983-06-12', 'YYYY-MM-DD'), '89520908762');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('0133096455', 'Kuznetsova', 'Maria', 'Stepanovna', TO_DATE('1988-03-25', 'YYYY-MM-DD'), '89600607621');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('6050803799', 'Terekhov', 'Ilya', 'Maksimovich', TO_DATE('1970-01-23', 'YYYY-MM-DD'), '89540445626');
+INSERT INTO Clients (INN, CLient_surname, CLient_name, CLient_patronymic, CLient_Date_of_Birth, Client_phonenumber) 
+VALUES ('1207982583', 'Lazareva', 'Margarita', 'Dmitrievna', TO_DATE('1978-06-13', 'YYYY-MM-DD'), '89412459089');
+
+
+INSERT INTO Managers (ID_Manager, Manager_surname, Manager_name, Manager_patronymic, Manager_Date_of_Birth, Department_number, Manager_phonenumber) 
+VALUES ('001', 'Egorov', 'Roman', 'Andreevich', TO_DATE('1994-04-12', 'YYYY-MM-DD'), '03', '89221346576');
+INSERT INTO Managers (ID_Manager, Manager_surname, Manager_name, Manager_patronymic, Manager_Date_of_Birth, Department_number, Manager_phonenumber) 
+VALUES ('002', 'Alekseeva', 'Anna', 'Maksimovna', TO_DATE('1997-02-25', 'YYYY-MM-DD'), '02', '89514564545');
+INSERT INTO Managers (ID_Manager, Manager_surname, Manager_name, Manager_patronymic, Manager_Date_of_Birth, Department_number, Manager_phonenumber) 
+VALUES ('003', 'Astakhov', 'Maksim', 'Alexandrovich', TO_DATE('1990-11-03', 'YYYY-MM-DD'), '02', '89555256577');
+INSERT INTO Managers (ID_Manager, Manager_surname, Manager_name, Manager_patronymic, Manager_Date_of_Birth, Department_number, Manager_phonenumber) 
+VALUES ('004', 'Alekseeva', 'Anna', 'Vladimirovna', TO_DATE('2000-04-13', 'YYYY-MM-DD'), '03', '89514262221');
+INSERT INTO Managers (ID_Manager, Manager_surname, Manager_name, Manager_patronymic, Manager_Date_of_Birth, Department_number, Manager_phonenumber) 
+VALUES ('005', 'Solodov', 'Denis', 'Petrovich', TO_DATE('1988-10-16', 'YYYY-MM-DD'), '02', '89600981344');
+
+
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('61883', '1071240952', '001', TO_DATE('2021-03-11', 'YYYY-MM-DD'), TO_DATE('2022-03-12', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('72128', '0133096455', '001', TO_DATE('2021-06-15', 'YYYY-MM-DD'), TO_DATE('2023-06-16', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('08035', '6050803799', '002', TO_DATE('2022-05-21', 'YYYY-MM-DD'), TO_DATE('2023-05-22', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('04419', '7261913011', '002', TO_DATE('2022-12-24', 'YYYY-MM-DD'), TO_DATE('2023-12-25', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('13514', '9666850374', '003', TO_DATE('2023-03-03', 'YYYY-MM-DD'), TO_DATE('2024-03-04', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('33226', '0545609195', '004', TO_DATE('2020-05-21', 'YYYY-MM-DD'), TO_DATE('2021-05-22', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('65304', '0545609195', '004', TO_DATE('2022-01-11', 'YYYY-MM-DD'), TO_DATE('2023-01-12', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('74913', '1537504888', '005', TO_DATE('2023-07-09', 'YYYY-MM-DD'), TO_DATE('2024-07-10', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('71720', '1071240952', '005', TO_DATE('2023-09-14', 'YYYY-MM-DD'), TO_DATE('2024-09-15', 'YYYY-MM-DD'));
+INSERT INTO Contracts (Contract_number, INN, ID_Manager, Date_of_registration, Finish_date) 
+VALUES ('87946', '1207982583', '005', TO_DATE('2023-10-22', 'YYYY-MM-DD'), TO_DATE('2024-10-23', 'YYYY-MM-DD'));
+
+
+INSERT INTO Software_Products (ID_Product, Product_name, INN, Date_of_purchase) 
+VALUES ('0001', 'AAA', '6766201793', TO_DATE('2020-04-01', 'YYYY-MM-DD'));
+INSERT INTO Software_Products (ID_Product, Product_name, INN, Date_of_purchase) 
+VALUES ('0002', 'BBB', '6766201793', TO_DATE('2020-06-01', 'YYYY-MM-DD'));
+INSERT INTO Software_Products (ID_Product, Product_name, INN, Date_of_purchase) 
+VALUES ('0003', 'CCC', '9666850374', TO_DATE('2022-10-13', 'YYYY-MM-DD'));
+INSERT INTO Software_Products (ID_Product, Product_name, INN, Date_of_purchase) 
+VALUES ('0004', 'AAA', '0545609195', TO_DATE('2023-07-15', 'YYYY-MM-DD'));
+INSERT INTO Software_Products (ID_Product, Product_name, INN, Date_of_purchase) 
+VALUES ('0005', 'BBB', '6050803799', TO_DATE('2021-09-08', 'YYYY-MM-DD'));
+
+
+ALTER TABLE Software_Products RENAME COLUMN ID_Product TO ID_Sale;
+
+ALTER TABLE Managers
+ADD Manager_email VARCHAR2(20);
+
+ALTER TABLE Clients
+ADD TG_ID VARCHAR2(50);
